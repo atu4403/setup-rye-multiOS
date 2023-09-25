@@ -12,7 +12,7 @@ runs:
   using: 'composite'
   steps:
     - name: Install Rye on Linux and macOS
-      run: curl -sSf https://rye-up.com/get | bash
+      run: RYE_INSTALL_OPTION="--yes" curl -sSf https://rye-up.com/get | bash
       shell: bash
       if: runner.os != 'Windows'
     - name: Install Rust and Rye on Windows
