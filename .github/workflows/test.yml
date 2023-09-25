@@ -16,7 +16,7 @@ jobs:
         os: [ubuntu-latest, macos-latest, windows-latest]
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
     - name: Use setup-rye-multiOS action
       uses: ./
     - name: Verify Rye Installation
@@ -26,4 +26,4 @@ jobs:
         rye pin 3.8
         rye sync
         python --version
-        
+
