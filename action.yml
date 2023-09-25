@@ -11,20 +11,21 @@ outputs:
 runs:
   using: 'composite'
   steps:
-    - name: Install Rust
-      run: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+    - name: Install Rye on Linux and macOS
+      run: curl -sSf https://rye-up.com/get | bash
       shell: bash
-    - name: Install Rye
-      run: cargo install --git https://github.com/mitsuhiko/rye rye
+      if: runner.os != 'Windows'
+    - name: Install Rust and Rye on Windows
+      run: |
+        curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+        cargo install --git https://github.com/mitsuhiko/rye rye
       shell: bash
+      if: runner.os == 'Windows'
     - name: Verify Rye Installation
       run: rye --version
       shell: bash
     - name: Pin Python Version
       run: rye pin ${{ inputs.python-version }}
-      shell: bash
-    - name: Sync Rye Environment
-      run: rye sync
       shell: bash
     - name: Set output
       run: echo "status=success" >> $GITHUB_ENV

@@ -23,3 +23,7 @@ jobs:
         python-version: '3.8'
     - name: Verify Rye Installation
       run: rye --version
+    - name: Install Python via Rye
+      run: rye install
+    - name: Verify Python Installation
+      run: python --version
