@@ -1,0 +1,25 @@
+name: Test Setup Rye MultiOS
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Use setup-rye-multiOS action
+      uses: ./
+      with:
+        python-version: '3.8'
+    - name: Verify Rye Installation
+      run: rye --version
