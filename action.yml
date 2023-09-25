@@ -12,8 +12,8 @@ runs:
       if: runner.os != 'Windows'
     - name: Add Rye to PATH
       run: |
-        echo $HOME
-        echo "echo "$HOME/.rye/env" >> $GITHUB_PATH
+        echo "$HOME/.rye/env" >> $GITHUB_PATH
+        echo "$HOME.rye/shims" >> $GITHUB_PATH
       shell: bash
     - name: Verify Rye Installation
       run: rye --version
