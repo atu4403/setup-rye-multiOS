@@ -27,3 +27,6 @@ runs:
     - name: Set output
       run: echo "status=success" >> $GITHUB_ENV
       shell: bash
+branding:
+  icon: 'check-circle'
+  color: 'white'
