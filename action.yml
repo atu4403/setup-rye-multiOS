@@ -11,9 +11,6 @@ outputs:
 runs:
   using: 'composite'
   steps:
-    - name: Checkout code
-      run: git clone https://github.com/${{ github.repository }}.git ${{ github.action_path }}
-      shell: bash
     - name: Install Rust
       run: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
       shell: bash
