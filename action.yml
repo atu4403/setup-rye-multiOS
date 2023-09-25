@@ -10,6 +10,12 @@ runs:
       run: curl -sSf https://rye-up.com/get | RYE_INSTALL_OPTION="--yes" bash
       shell: bash
       if: runner.os != 'Windows'
+    - name: Install Rust and Rye on Windows
+      run: |
+        curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+        cargo install --git https://github.com/mitsuhiko/rye rye
+      shell: bash
+      if: runner.os == 'Windows'
     - name: Add Rye to PATH
       run: |
         echo "$HOME/.rye/env" >> $GITHUB_PATH
